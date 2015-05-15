@@ -1,0 +1,97 @@
+// ---- susy setting ----
+// basic for susy
+$susy: (
+  columns: 4,
+  gutters: 1/4,
+  debug: (
+    image: show,
+    color: rgba(gray, 0.25),
+    output: background,
+    toggle: top right,
+  ),
+);
+
+
+// add media
+$pad-breakpoint: 640px;
+$pad-columns: 8;
+$pad: $pad-breakpoint, $pad-columns;
+
+$desktop-breakpoint: 960px;
+$desktop-columns: 12;
+$desktop: $desktop-breakpoint, $desktop-columns;
+
+// page-container
+$page-container: ".page";
+
+// debug layout
+// @import "layout-debug";
+
+// ---- container setting ----
+#{$page-container} {
+  @include container;
+  padding: 0 24px;
+  min-height: 600px;
+
+  @include susy-breakpoint($pad...) {
+    @include container();
+    padding: 0 48px;
+  }
+
+  @include susy-breakpoint($desktop...) {
+    padding: 0 72px;
+    @include container();
+    max-width: 1440px;
+  }
+
+}
+
+
+.main {
+  height: 300px;
+  background-color: rgba(green, 0.25);
+  @include trailer(1);
+  @include susy-breakpoint($pad...) {
+    @include span(6);
+  }
+
+  @include susy-breakpoint($desktop...) {
+    @include span(8);
+  }
+
+}
+
+.sidebar {
+  @include trailer(1);
+  height: 300px;
+  background-color: rgba(red, 0.25);
+  @include susy-breakpoint($pad...) {
+    @include span(last 2);
+  }
+
+  @include susy-breakpoint($desktop...) {
+    @include span(last 4);
+  }
+}
+
+
+.box {
+  @include pie-clearfix;
+}
+
+.box-item {
+
+  height: 200px;
+  @include trailer(1);
+
+  background-color: rgba(orange, 0.25);
+
+  @include susy-breakpoint($pad...) {
+    @include gallery(4);
+  }
+  @include susy-breakpoint($desktop...) {
+    @include gallery(4);
+  }
+
+
+}
